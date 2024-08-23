@@ -1,0 +1,94 @@
+@startuml  
+ hide cirlcle 
+ title student 
+
+legend top left 
+  
+ end legend
+entity "VRSTA PICE" as o41 #ffffff/b0ffff;line:00aaaa {
+	* Šifra pice : Integer   MANDATORY PRIMARY KEY
+	* Naziv pice : VARCHAR 40  MANDATORY 
+	* Velikost : VARCHAR 10  MANDATORY 
+	* Cena : Number   MANDATORY  
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "SESTAVINE" as o42 #ffffff/b0ffff;line:00aaaa {
+	* Šifra sestavine : Integer   MANDATORY PRIMARY KEY
+	* Opis : VARCHAR 200    
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "POSTAVKA NAROCILA" as o43 #ffffff/b0ffff;line:00aaaa {
+	* Kolicina : Integer   MANDATORY  
+	 --
+}
+entity "OSBEA" as o44 #ffffff/b0ffff;line:00aaaa {
+	* Šifra osebe : Integer   MANDATORY PRIMARY KEY
+	* Ime : VARCHAR 20  MANDATORY 
+	* Priimek : VARCHAR 20  MANDATORY 
+	* Telefonska številka : VARCHAR 11  MANDATORY  
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "ZAPOSLEN" as o45 #ffffff/b0ffff;line:00aaaa {
+	* Davcna številka : VARCHAR 8  MANDATORY 
+	* Delovno mesto : VARCHAR 40  MANDATORY 
+	* Bruto placa : Money   MANDATORY  
+	 --
+}
+entity "STRANKA" as o46 #ffffff/b0ffff;line:00aaaa {
+	* je študent? : Boolean     
+	 --
+}
+entity "NASLOV" as o47 #ffffff/b0ffff;line:00aaaa {
+	* Ulica : VARCHAR 20  MANDATORY PRIMARY KEY
+	* Hišna številka : VARCHAR 5  MANDATORY PRIMARY KEY 
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "POŠTA" as o48 #ffffff/b0ffff;line:00aaaa {
+	* Poštna številka : Number 4  MANDATORY PRIMARY KEY
+	* Kraj : VARCHAR 20  MANDATORY  
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "NAROCILO" as o49 #ffffff/b0ffff;line:00aaaa {
+	* Šifra narocila : Integer   MANDATORY PRIMARY KEY
+	* Datum in cas narocila : Date and Time   MANDATORY 
+	* Popust : Number     
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "STATUS" as o50 #ffffff/b0ffff;line:00aaaa {
+	* Šifra statusa : Integer   MANDATORY PRIMARY KEY
+	* Opis statusa : VARCHAR 20    
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+circle "specializacija generalizacija Complete " as o7 #ffffff/b0ffff;line:8080ff
+
+o42 }|-[#8080ff]-o{ o41: vsebuje 
+
+o41 ||.[#8080ff].o{ o43: velja za 
+
+o45 |o-[#8080ff]-o{ o45: nadrejenost 
+
+o48 ||.[#8080ff].o{ o47: v kraju 
+
+o47 }|-[#8080ff]-o{ o44: dostava na 
+
+o49 ||.[#8080ff].|{ o43: sestavlja 
+
+o50 ||-[#8080ff]-o{ o49: ima 
+
+o49 }|-[#8080ff]-|| o46: naroci 
+
+o49 }o-[#8080ff]-|| o45: sprejme 
+
+o49 }o-[#8080ff]-|| o45: dostavi 
+
+o7 -[#8080ff]-|> o44
+o45 -[#8080ff]- o7
+o46 -[#8080ff]- o7
+@enduml

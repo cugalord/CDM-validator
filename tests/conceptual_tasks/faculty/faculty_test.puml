@@ -1,0 +1,104 @@
+@startuml  
+ hide cirlcle 
+ title faculty_test 
+
+legend top left 
+ Relationship obiskuje cardinality mismatch 
+ 
+ end legend
+entity "OSEBA" as o49 #ffffff/b0ffff;line:00aaaa {
+	* EMŠO : Number 13  MANDATORY PRIMARY KEY
+	* Ime : VARCHAR 20   
+	* Priimek : VARCHAR 20   
+	* Starost : Integer     
+	 --
+	* Identifier_1 PRIMARY KEY
+}
+entity "ŠTUDENT" as o50 #ffffff/b0ffff;line:00aaaa {
+	* Spol : VARCHAR 6    
+	 --
+}
+entity "UCITELJ" as o51 #ffffff/b0ffff;line:00aaaa {
+	* Naziv : VARCHAR 20  MANDATORY 
+	* Telefonska številka : VARCHAR 11  MANDATORY  
+	 --
+}
+entity "ABSOLVENT" as o52 #ffffff/b0ffff;line:00aaaa {
+	* Naslov diplomskega dela : VARCHAR 100    
+	 --
+}
+entity "KATEDRA" as o53 #ffffff/b0ffff;line:00aaaa {
+	* Naziv katedre : VARCHAR 40  MANDATORY PRIMARY KEY
+	* Telefonska številka : VARCHAR 11    
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "RAZISKOVALNO PODROCJE" as o54 #ffffff/b0ffff;line:00aaaa {
+	* Šifra raziskovalnega podrocja : Integer   MANDATORY PRIMARY KEY
+	* Naziv raziskovalnega podrocja : VARCHAR 200  MANDATORY  
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "KRAJ" as o55 #ffffff/b0ffff;line:00aaaa {
+	* Poštna številka : Number 4  MANDATORY PRIMARY KEY
+	* Kraj : VARCHAR 20  MANDATORY  
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "BIVANJE" as o56 #ffffff/b0ffff;line:00aaaa {
+	* Zacetek bivanja : Date   MANDATORY PRIMARY KEY
+	* Konec bivanja : Date   MANDATORY PRIMARY KEY 
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "PREDAVANJE" as o57 #ffffff/b0ffff;line:00aaaa {
+	* Dan v tednu : VARCHAR 10  MANDATORY PRIMARY KEY
+	* Ura : Time   MANDATORY 
+	* Ucilnica : VARCHAR 20  MANDATORY  
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+entity "PREDMET" as o58 #ffffff/b0ffff;line:00aaaa {
+	* Šifra predmeta : VARCHAR 5  MANDATORY PRIMARY KEY
+	* Naziv predmeta : VARCHAR 20  MANDATORY  
+	 --
+	* Identifier_1 PRIMARY KEY
+}
+entity "IZPIT" as o59 #ffffff/b0ffff;line:00aaaa {
+	* Ocena : Integer   MANDATORY 
+	* Datum : Date   MANDATORY PRIMARY KEY 
+	 --
+	* Primarni kljuc PRIMARY KEY
+}
+circle "specializacija osebe Complete Mutually Exclusive " as o7 #ffffff/b0ffff;line:8080ff
+
+circle "Specializacija študenta Complete " as o11 #ffffff/b0ffff;line:8080ff
+
+o52 }o-[#8080ff]-|| o51: mentor 
+
+o51 }|-[#8080ff]-|| o53: je clan 
+
+o51 }|-[#8080ff]-|{ o54: se ukvarja 
+
+o55 ||.[#8080ff].o{ o56: velja za 
+
+o50 ||.[#8080ff].|{ o56: biva 
+
+o58 ||.[#8080ff].o{ o57: se predava 
+
+o58 ||.[#8080ff].o{ o59: obveznosti pri 
+
+o51 ||.[#8080ff].o{ o57: predava 
+
+o51 ||.[#8080ff].o{ o59: izpraševalec 
+
+o57 }|-[#FF0000]-|{ o50: obiskuje 
+
+o50 }o-[#8080ff]-|| o55: Relationship_13 
+
+o7 -[#8080ff]-|> o49
+o50 -[#8080ff]- o7
+o51 -[#8080ff]- o7
+o11 -[#8080ff]-|> o50
+o52 -[#8080ff]- o11
+@enduml

@@ -1,0 +1,21 @@
+@startuml  
+ hide cirlcle 
+ title car_sales_t2 
+
+legend top left 
+ Unmatched attribute in entity CENIK: Datum do 
+Unmatched attribute in entity CENIK: Šifra cenika 
+Unmatched attribute in entity CENIK: Datum od 
+Unmatched identifier in entity CENIK: Entitetni identifikator 
+Unmatched entity in solution model: AKCIJA 
+Unmatched entity in solution model: AVTOMOBIL 
+Unmatched entity in solution model: POSTAVKA CENIKA 
+Unmatched relationship in solution model: ima akcijo 
+Unmatched relationship in solution model: je na ceniku 
+Unmatched relationship in solution model: velja za 
+ 
+ end legend
+entity "CENIK" as o5 #FF0000;line:000000 { 
+	 --
+}
+@enduml

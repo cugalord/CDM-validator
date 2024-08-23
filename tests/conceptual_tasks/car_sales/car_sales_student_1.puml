@@ -1,0 +1,51 @@
+@startuml  
+ hide cirlcle 
+ title car_sales_student_1 
+
+legend top left 
+ Attribute ID_cenika not found in the solution model 
+Attribute Od not found in the solution model 
+Attribute Do not found in the solution model 
+Attribute Cena_brez_DDV not found in the solution model 
+Attribute Ime_akcije not found in the solution model 
+Attribute popust not found in the solution model 
+Unmatched attribute in entity Cenik: Datum do 
+Unmatched attribute in entity Cenik: Šifra cenika 
+Unmatched attribute in entity Cenik: Datum od 
+Identifier attributes mismatch in solution model 
+Table o8 identifier o10 not found in solution model 
+Unmatched identifier in entity Cenik: Entitetni identifikator 
+Attribute ID_avtomobila not found in the solution model 
+Attribute Ime_avtomobila not found in the solution model 
+Unmatched attribute in entity Avtomobil: Šifra Avtomobila 
+Unmatched attribute in entity Avtomobil: Naziv avtomobila 
+Identifier attributes mismatch in solution model 
+Table o9 identifier o23 not found in solution model 
+Unmatched identifier in entity Avtomobil: Entitetni identifikator 
+Unmatched entity in solution model: POSTAVKA CENIKA 
+Unmatched entity in solution model: AKCIJA 
+Relationship na ceniku not found in solution model 
+Unmatched relationship in solution model: velja za 
+Unmatched relationship in solution model: ima akcijo 
+Unmatched relationship in solution model: je na ceniku 
+ 
+ end legend
+entity "Cenik" as o8 #FF0000;line:000000 {
+	* ID_cenika : Integer   MANDATORY PRIMARY KEY
+	* Od : Date   MANDATORY 
+	* Do : Date   MANDATORY 
+	* Cena_brez_DDV : Money   MANDATORY 
+	* Ime_akcije : VARCHAR 1024   
+	* popust : Float     
+	 --
+	* Identifier_1 PRIMARY KEY
+}
+entity "Avtomobil" as o9 #FF0000;line:000000 {
+	* ID_avtomobila : Integer   MANDATORY PRIMARY KEY
+	* Ime_avtomobila : VARCHAR 60  MANDATORY  
+	 --
+	* Identifier_1 PRIMARY KEY
+}
+o9 ||-[#FF0000]-o{ o8: na ceniku 
+
+@enduml

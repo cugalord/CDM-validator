@@ -1,0 +1,38 @@
+@startuml  
+ hide cirlcle 
+ title car_sales_solution 
+
+legend top left 
+ no errors 
+ end legend
+entity "CENIK" as o14 #ffffff/b0ffff;line:00aaaa {
+	* Datum od : Date   MANDATORY 
+	* Datum do : Date   MANDATORY 
+	* Šifra cenika : Integer   MANDATORY PRIMARY KEY 
+	 --
+	* Entitetni identifikator PRIMARY KEY
+}
+entity "POSTAVKA CENIKA" as o15 #ffffff/b0ffff;line:00aaaa {
+	* Cena brez DDV : Money   MANDATORY 
+	* Popust : Decimal     
+	 --
+}
+entity "AKCIJA" as o16 #ffffff/b0ffff;line:00aaaa {
+	* Šifra akcije : Integer   MANDATORY PRIMARY KEY
+	* Ime Akcije : VARCHAR 40  MANDATORY  
+	 --
+	* Entitetni identifikator PRIMARY KEY
+}
+entity "AVTOMOBIL" as o17 #ffffff/b0ffff;line:00aaaa {
+	* Šifra Avtomobila : Integer   MANDATORY PRIMARY KEY
+	* Naziv avtomobila : VARCHAR 40    
+	 --
+	* Entitetni identifikator PRIMARY KEY
+}
+o15 }o.[#8080ff].|| o17: velja za 
+
+o15 }|.[#8080ff].|| o14: je na ceniku 
+
+o14 }|-[#8080ff]-o| o16: ima akcijo 
+
+@enduml

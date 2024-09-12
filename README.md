@@ -14,4 +14,4 @@ Tool was written and tested with Python 3.12, and uses a [plantuml
 
 ## 2. Example results
 
-![Example](res/example.png)
+![Example](res/Example.png)

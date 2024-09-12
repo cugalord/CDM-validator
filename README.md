@@ -2,7 +2,7 @@
 Created as a part of my undergraduate diploma thesis.
 
 ## 1. Description
-This compiler is a part of my CS Undergraduate diploma thesis, in which
+This tool is a part of my CS Undergraduate diploma thesis, in which
 I attempt to automate the validation of conceptual data models.
 The validator can read .cdm files, created in PowerDesigner, and uses PlantUML for visualization of the model. The model is validated by being compared to a solution model.
 

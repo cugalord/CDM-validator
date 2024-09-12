@@ -4,7 +4,7 @@ Created as a part of my undergraduate diploma thesis.
 ## 1. Description
 This tool is a part of my CS Undergraduate diploma thesis, in which
 I attempt to automate the validation of conceptual data models.
-The validator can read .cdm files, created in PowerDesigner, and uses PlantUML for visualization of the model. The model is validated by being compared to a solution model.
+The validator can read .cdm files, created in PowerDesigner (tested on PowerDesigner 12.5), and uses PlantUML for visualization of the model. The model is validated by being compared to a solution model.
 
 ## 2. Running and requirements
 To run this project, simply run the App.py file.
